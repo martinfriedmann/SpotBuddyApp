@@ -7,7 +7,7 @@
 <title>Welcome Page</title>
 </head>
 <body>
-<form action="login" method="post">
+<form action="LoginController" method="post">
 <table>
 <tr><td>${message}</td><td></td></tr>
 <tr><td>Leave your comment of the class here: </td><td><input type="text" name="comment"></td><td><input type="submit" name="submit" value="Insert Comment"></td><td></td></tr>

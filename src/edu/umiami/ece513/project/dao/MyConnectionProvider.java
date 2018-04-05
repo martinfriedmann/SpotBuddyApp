@@ -1,4 +1,4 @@
-package login.sumit.registration;
+package edu.umiami.ece513.project.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

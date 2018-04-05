@@ -7,10 +7,11 @@
 <title>List of Comments</title>
 </head>
 <body>
-<form action="login" method="post">
+<form action="LoginController" method="post">
 <table>
 <tr><td>${messageList}</td><td></td></tr>
 <tr><td><input type="submit" name="submit" value="Log Out"></td><td></td></tr>
+<tr><td><input type="submit" name="submit" value="Insert More Comments"></td><td></td></tr>
 </table>
 </form>
 </body>

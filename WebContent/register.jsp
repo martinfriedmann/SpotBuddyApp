@@ -7,7 +7,7 @@
 <title>Register page</title>
 </head>
 <body>
-<form action="login" method="post">
+<form action="LoginController" method="post">
 <table>
 <tr><td>${message}</td><tr>
 <tr><td>${successMessage}</td><tr>

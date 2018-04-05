@@ -1,10 +1,10 @@
-package login.sumit.registration;
+package edu.umiami.ece513.project.vo;
 
-public interface PersonDB {
+public interface PersonDeclarations {
 	
 	public int insertPerson(Person p);
 	public Person getPerson(String username, String pwd);
 	public int insertComment(Comments c);
-	public String getComments();
+	public String getComments(String username);
 	public boolean checkPerson(String username);
 }

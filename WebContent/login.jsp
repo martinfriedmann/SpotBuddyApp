@@ -9,7 +9,7 @@
 <title>Login page</title>
 </head>
 <body>
-<form action="login" method="post">
+<form action="LoginController" method="post">
 <table>
 <tr><td>${message}</td><td></td></tr>
 <tr><td>${successMessage}</td><td></td></tr>

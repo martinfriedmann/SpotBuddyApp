@@ -1,14 +1,16 @@
-package login.sumit.registration;
+package edu.umiami.ece513.project.dao;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import edu.umiami.ece513.project.vo.*;
 
-public class PersonDAImplementation implements PersonDB {
+public class PersonDAOImplementation implements PersonDeclarations {
 
 	static Connection conn;
 	static PreparedStatement ps;
-	static Comments cm=new Comments();
+
 	@Override
 	public int insertPerson(Person p) {
 		int status = 0;
@@ -54,7 +56,6 @@ public class PersonDAImplementation implements PersonDB {
 			ps.setString(2, pwd);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
-				cm.setUsername(username);
 				p.setUsername(rs.getString(1));
 				p.setPwd(rs.getString(2));
 				p.setFname(rs.getString(3));
@@ -73,13 +74,13 @@ public class PersonDAImplementation implements PersonDB {
 		try{
 			conn=MyConnectionProvider.getConnection();
 			ps=conn.prepareStatement("select MAX(commentID) from comments where username=?");
-			ps.setString(1, cm.getUsername());
+			ps.setString(1, c.getUsername());
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) c.setCommentID(rs.getInt(1) + 1);
 			else c.setCommentID(1);
 			ps=conn.prepareStatement("insert into comments values(?,?,?)");
 			ps.setInt(1, c.getCommentID());
-			ps.setString(2, cm.getUsername());
+			ps.setString(2, c.getUsername());
 			ps.setString(3, c.getComment());
 			status=ps.executeUpdate();
 			conn.close();			
@@ -89,14 +90,14 @@ public class PersonDAImplementation implements PersonDB {
 		return status;
 	}
 	
-	public String getComments() {
+	public String getComments(String username) {
 		Comments c=new Comments();
 		String wholething="<br />";
 		try {
 			conn=MyConnectionProvider.getConnection();
-			c.setUsername(cm.getUsername());
+			c.setUsername(username);
 			ps=conn.prepareStatement("select commentID, comment from comments where username=? order by commentID desc");
-			ps.setString(1, cm.getUsername());
+			ps.setString(1, c.getUsername());//
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				c.setCommentID(rs.getInt(1));

@@ -1,4 +1,4 @@
-package login.sumit.registration;
+package edu.umiami.ece513.project.vo;
 
 public class Person {
 	private String username;
